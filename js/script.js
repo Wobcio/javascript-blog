@@ -32,8 +32,8 @@ function titleClickHandler(event){
   console.log('articleToDisplay: ', articleToDisplay);
 
   /* [DONE] add class 'active' to the correct article */
-  articleToDisplay.classList.add('active')
-  console.log(articleToDisplay, 'has now class active')
+  articleToDisplay.classList.add('active');
+  console.log(articleToDisplay, 'has now class active');
 }
 
 
@@ -50,12 +50,12 @@ function generateTitleLinks(){
   const titleList = document.querySelector(optTitleListSelector);
   function clearList(){
     console.log(titleList);
-  	titleList.innerHTML = '';
+    titleList.innerHTML = '';
     console.log('clearing list');
   }
   clearList();
 
-  let html = ''
+  let html = '';
   /* [DONE] for each article */
   const articles = document.querySelectorAll(optArticleSelector);
   for(let article of articles){
@@ -74,7 +74,7 @@ function generateTitleLinks(){
 
     /* [DONE] insert link into html variable */
     html = html + linkHTML;
-    console.log(html)
+    console.log(html);
   }
   /* [DONE] insert html into titleList */
   titleList.innerHTML = html;
