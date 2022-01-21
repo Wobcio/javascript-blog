@@ -1,13 +1,14 @@
 'use strict';
 
+/* global Handlebars */
+
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
   tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
   authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
   tagsCloudLink: Handlebars.compile(document.querySelector('#template-tags-cloud-link').innerHTML),
   authorsCloudLink: Handlebars.compile(document.querySelector('#template-authors-cloud-link').innerHTML),
-
-}
+};
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
@@ -183,7 +184,7 @@ function generateTags() {
     for (let tag of articleTagsArray) {
 
       /* generate HTML of the link */
-      const linkHTMLData = {id: tag}
+      const linkHTMLData = {id: tag};
       const linkHTML = templates.tagLink(linkHTMLData);
       //console.log(linkHTML);
 
@@ -192,7 +193,8 @@ function generateTags() {
       //console.log(html);
 
       /* check if this link is NOT already in allTags */
-      if (!allTags.hasOwnProperty(tag)) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (!Object.hasOwnProperty(allTags, tag)) {
         /* add generated code to allTags array */
         allTags[tag] = 1;
       } else {
@@ -314,10 +316,11 @@ function generateAuthors() {
     //console.log(articleAuthorWrapper);
     
     // add link to wrapper
-    const authorLinkData = {id: author}
+    const authorLinkData = {id: author};
     articleAuthorWrapper.innerHTML = templates.authorLink(authorLinkData);
 
     // chceck if author is in allAuthors
+    // eslint-disable-next-line no-prototype-builtins
     if(!allAuthors.hasOwnProperty(author)){
 
       // add or increment
