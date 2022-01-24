@@ -131,6 +131,8 @@ function calculateTagsParams(tags){
 // CALCULATING CLASS OF TAGS
 
 function calculateTagsClass(count, params){
+  console.log('calculating tag class');
+  console.log(count, params);
   const normalizedMax = params.max - params.min;
   const difference = count - params.min;
   const percentage = difference / normalizedMax;
@@ -194,7 +196,7 @@ function generateTags() {
 
       /* check if this link is NOT already in allTags */
       // eslint-disable-next-line no-prototype-builtins
-      if (!Object.hasOwnProperty(allTags, tag)) {
+      if (!allTags.hasOwnProperty(tag)) {
         /* add generated code to allTags array */
         allTags[tag] = 1;
       } else {
